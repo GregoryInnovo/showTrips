@@ -10,6 +10,12 @@
       "eas": {
         "projectId": "39455b7c-b6df-40e1-ae28-d360eb0448c5"
       }
+    },
+    "android": {
+      "package": "com.gregoryinnovo.showTrips"
+    },
+    "ios": {
+      "bundleIdentifier": "com.gregoryinnovo.showTrips"
     }
   }
 }
