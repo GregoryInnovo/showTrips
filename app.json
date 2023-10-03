@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "showTrips",
+    "slug": "showTrips",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "39455b7c-b6df-40e1-ae28-d360eb0448c5"
+      }
+    }
+  }
+}
