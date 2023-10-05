@@ -1,10 +1,10 @@
-import React from 'react';
-import Realm from 'realm';
-import {View, Text, Pressable, StyleSheet} from 'react-native';
+import React from "react";
+import Realm from "realm";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 
-import {shadows} from '../styles/shadows';
-import colors from '../styles/colors';
-import {Task} from '../models/Task';
+import { shadows } from "../styles/shadows";
+import colors from "../styles/colors";
+import { Task } from "../models/Task";
 
 type TaskItemProps = {
   task: Task & Realm.Object;
@@ -13,13 +13,14 @@ type TaskItemProps = {
 };
 
 export const TaskItem = React.memo<TaskItemProps>(
-  ({task, onToggleStatus, onDelete}) => {
+  ({ task, onToggleStatus, onDelete }) => {
     return (
       <View style={styles.task}>
         <Pressable
           onPress={onToggleStatus}
-          style={[styles.status, task.isComplete && styles.completed]}>
-          <Text style={styles.icon}>{task.isComplete ? '✓' : '○'}</Text>
+          style={[styles.status, task.isComplete && styles.completed]}
+        >
+          <Text style={styles.icon}>{task.isComplete ? "✓" : "○"} asasdsd</Text>
         </Pressable>
         <View style={styles.descriptionContainer}>
           <Text numberOfLines={1} style={styles.description}>
@@ -37,8 +38,8 @@ export const TaskItem = React.memo<TaskItemProps>(
 const styles = StyleSheet.create({
   task: {
     height: 50,
-    alignSelf: 'stretch',
-    flexDirection: 'row',
+    alignSelf: "stretch",
+    flexDirection: "row",
     marginVertical: 8,
     backgroundColor: colors.white,
     borderRadius: 5,
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
   },
   descriptionContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   description: {
     paddingHorizontal: 10,
@@ -55,8 +56,8 @@ const styles = StyleSheet.create({
   },
   status: {
     width: 50,
-    height: '100%',
-    justifyContent: 'center',
+    height: "100%",
+    justifyContent: "center",
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
     backgroundColor: colors.gray,
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.purple,
   },
   deleteButton: {
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   deleteText: {
     marginHorizontal: 10,
@@ -74,8 +75,8 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: colors.white,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 17,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });

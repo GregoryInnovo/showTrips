@@ -1,9 +1,9 @@
-import React from 'react';
-import {View, FlatList, StyleSheet} from 'react-native';
-import {Realm} from '@realm/react';
+import React from "react";
+import { View, FlatList, StyleSheet } from "react-native";
+import { Realm } from "@realm/react";
 
-import {Task} from '../models/Task';
-import {TaskItem} from './TaskItem';
+import { Task } from "../models/Task";
+import { TaskItem } from "./TaskItem";
 
 type TaskListProps = {
   tasks: Realm.Results<Task & Realm.Object>;
@@ -20,8 +20,8 @@ export const TaskList: React.FC<TaskListProps> = ({
     <View style={styles.listContainer}>
       <FlatList
         data={tasks}
-        keyExtractor={task => task._id.toString()}
-        renderItem={({item}) => (
+        keyExtractor={(task) => task._id.toString()}
+        renderItem={({ item }) => (
           <TaskItem
             task={item}
             onToggleStatus={() => onToggleTaskStatus(item)}
@@ -37,7 +37,7 @@ export const TaskList: React.FC<TaskListProps> = ({
 const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 });
 

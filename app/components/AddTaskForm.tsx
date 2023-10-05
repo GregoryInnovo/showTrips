@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,22 +6,22 @@ import {
   Pressable,
   Platform,
   StyleSheet,
-} from 'react-native';
+} from "react-native";
 
-import {buttonStyles} from '../styles/button';
-import colors from '../styles/colors';
-import {shadows} from '../styles/shadows';
+import { buttonStyles } from "../styles/button";
+import colors from "../styles/colors";
+import { shadows } from "../styles/shadows";
 
 type AddTaskFormProps = {
   onSubmit: (description: string) => void;
 };
 
-export const AddTaskForm: React.FC<AddTaskFormProps> = ({onSubmit}) => {
-  const [description, setDescription] = useState('');
+export const AddTaskForm: React.FC<AddTaskFormProps> = ({ onSubmit }) => {
+  const [description, setDescription] = useState("");
 
   const handleSubmit = () => {
     onSubmit(description);
-    setDescription('');
+    setDescription("");
   };
 
   return (
@@ -45,13 +45,13 @@ const styles = StyleSheet.create({
   form: {
     height: 50,
     marginBottom: 20,
-    flexDirection: 'row',
+    flexDirection: "row",
     ...shadows,
   },
   textInput: {
     flex: 1,
     paddingHorizontal: 15,
-    paddingVertical: Platform.OS === 'ios' ? 15 : 0,
+    paddingVertical: Platform.OS === "ios" ? 15 : 0,
     borderRadius: 5,
     backgroundColor: colors.white,
     fontSize: 17,
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   submit: {
     ...buttonStyles.button,
     width: 50,
-    height: '100%',
+    height: "100%",
     paddingHorizontal: 0,
     paddingVertical: 0,
     marginLeft: 20,

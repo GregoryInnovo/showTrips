@@ -1,31 +1,31 @@
-import React, {useEffect, useState} from 'react';
-import {useApp, useAuth, useQuery, useRealm, useUser} from '@realm/react';
-import {Pressable, StyleSheet, Text} from 'react-native';
+import React, { useEffect, useState } from "react";
+import { useApp, useAuth, useQuery, useRealm, useUser } from "@realm/react";
+import { Pressable, StyleSheet, Text } from "react-native";
 
-import {Task} from './models/Task';
-import {TaskManager} from './components/TaskManager';
-import {buttonStyles} from './styles/button';
-import {shadows} from './styles/shadows';
-import colors from './styles/colors';
-import {OfflineModeButton} from './components/OfflineModeButton';
+import { Task } from "./models/Task";
+import { TaskManager } from "./components/TaskManager";
+import { buttonStyles } from "./styles/button";
+import { shadows } from "./styles/shadows";
+import colors from "./styles/colors";
+import { OfflineModeButton } from "./components/OfflineModeButton";
 
 export const AppSync: React.FC = () => {
   const realm = useRealm();
   const user = useUser();
   const app = useApp();
-  const {logOut} = useAuth();
+  const { logOut } = useAuth();
   const [showDone, setShowDone] = useState(false);
   const tasks = useQuery(
     Task,
-    collection =>
+    (collection) =>
       showDone
-        ? collection.sorted('createdAt')
-        : collection.filtered('isComplete == false').sorted('createdAt'),
+        ? collection.sorted("createdAt")
+        : collection.filtered("isComplete == false").sorted("createdAt"),
     [showDone],
   );
 
   useEffect(() => {
-    realm.subscriptions.update(mutableSubs => {
+    realm.subscriptions.update((mutableSubs) => {
       mutableSubs.add(tasks);
     });
   }, [realm, tasks]);
@@ -41,7 +41,8 @@ export const AppSync: React.FC = () => {
       />
       <Pressable style={styles.authButton} onPress={logOut}>
         <Text
-          style={styles.authButtonText}>{`Logout ${user?.profile.email}`}</Text>
+          style={styles.authButtonText}
+        >{`Logout ${user?.profile.email}`}</Text>
       </Pressable>
       <OfflineModeButton />
     </>
@@ -50,7 +51,7 @@ export const AppSync: React.FC = () => {
 
 const styles = StyleSheet.create({
   idText: {
-    color: '#999',
+    color: "#999",
     paddingHorizontal: 20,
   },
   authButton: {

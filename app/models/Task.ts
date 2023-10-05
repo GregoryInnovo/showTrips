@@ -6,7 +6,7 @@
 // to defining a schema on the class - see `Task.js` in the Realm example app
 // for an example of this.
 
-import Realm, {BSON} from 'realm';
+import Realm, { BSON } from "realm";
 
 // To use a class as a Realm object type in Typescript with the `@realm/babel-plugin` plugin,
 // simply define the properties on the class with the correct type and the plugin will convert
@@ -18,5 +18,5 @@ export class Task extends Realm.Object {
   createdAt: Date = new Date();
   userId!: string;
 
-  static primaryKey = '_id';
+  static primaryKey = "_id";
 }
