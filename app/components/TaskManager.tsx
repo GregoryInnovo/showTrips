@@ -37,7 +37,7 @@ export const TaskManager: React.FC<{
         });
       });
     },
-    [realm, userId],
+    [realm, userId]
   );
 
   const handleToggleTaskStatus = useCallback(
@@ -61,7 +61,7 @@ export const TaskManager: React.FC<{
       //   task.isComplete = !task.isComplete;
       // });
     },
-    [realm],
+    [realm]
   );
 
   const handleDeleteTask = useCallback(
@@ -73,7 +73,7 @@ export const TaskManager: React.FC<{
         // realm?.delete(realm?.objectForPrimaryKey('Task', id));
       });
     },
-    [realm],
+    [realm]
   );
 
   return (

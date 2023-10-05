@@ -5,13 +5,15 @@ import { Realm } from "@realm/react";
 import { Task } from "../models/Task";
 import { TaskItem } from "./TaskItem";
 
+import { mockData } from "../utils/mockData";
+
 type TaskListProps = {
   tasks: Realm.Results<Task & Realm.Object>;
   onToggleTaskStatus: (task: Task & Realm.Object) => void;
   onDeleteTask: (task: Task & Realm.Object) => void;
 };
 
-export const TaskList: React.FC<TaskListProps> = ({
+export const TaskList: React.FC<any> = ({
   tasks,
   onToggleTaskStatus,
   onDeleteTask,
@@ -19,8 +21,8 @@ export const TaskList: React.FC<TaskListProps> = ({
   return (
     <View style={styles.listContainer}>
       <FlatList
-        data={tasks}
-        keyExtractor={(task) => task._id.toString()}
+        data={mockData}
+        keyExtractor={(trip) => trip._id.toString()}
         renderItem={({ item }) => (
           <TaskItem
             task={item}

@@ -12,32 +12,33 @@ type TaskItemProps = {
   onDelete: () => void;
 };
 
-export const TaskItem = React.memo<TaskItemProps>(
+export const TaskItem = React.memo<any>(
   ({ task, onToggleStatus, onDelete }) => {
+    console.log("render...");
     return (
       <View style={styles.task}>
         <Pressable
           onPress={onToggleStatus}
-          style={[styles.status, task.isComplete && styles.completed]}
+          style={[styles.status, task.excess_capacity && styles.completed]}
         >
-          <Text style={styles.icon}>{task.isComplete ? "✓" : "○"} asasdsd</Text>
+          <Text style={styles.icon}>{task.excess_capacity ? "✓" : "○"} </Text>
         </Pressable>
         <View style={styles.descriptionContainer}>
           <Text numberOfLines={1} style={styles.description}>
-            {task.description}
+            {task.name} |{task.ticket_cost}
           </Text>
         </View>
         <Pressable onPress={onDelete} style={styles.deleteButton}>
-          <Text style={styles.deleteText}>Delete</Text>
+          <Text style={styles.deleteText}>Deletee</Text>
         </Pressable>
       </View>
     );
-  },
+  }
 );
 
 const styles = StyleSheet.create({
   task: {
-    height: 50,
+    height: 150,
     alignSelf: "stretch",
     flexDirection: "row",
     marginVertical: 8,
