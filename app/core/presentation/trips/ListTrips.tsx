@@ -1,56 +1,126 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
-import React, { useEffect, useState } from "react";
-import { TaskItem } from "../../../components/TaskItem";
-import { mockData } from "../../../utils/mockData";
-
-type Props = {};
-
+import {
+  Button,
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
+import React, {
+  useCallback,
+  useDeferredValue,
+  useEffect,
+  useState,
+} from "react";
 import { ITripRepository } from "../../data/ITripRepository";
 import { TripUseCase } from "../../domain/TripUseCase";
+import { Trip } from "../../data/Trip";
+import { useQuery, useRealm } from "@realm/react";
+import CreateTrip from "./CreateTrip";
+import colors from "../../../styles/colors";
+import { TripItem } from "../../../components/TripItem";
 
-function getSampleBookData() {}
-
-const ListTrips = (props: Props) => {
+const ListTrips = () => {
+  const realm = useRealm();
+  const trips = useQuery(Trip);
+  const [tripsMock, setTripsMock] = useState([]);
   const iTripRepository = new ITripRepository();
 
-  console.log(iTripRepository);
-
-  const [state, set] = useState([]);
+  const [showNewTrip, setShowNewTrip] = useState(false);
+  const [filteredData, setFilteredData] = useState<Trip[] | null>(null);
+  const [search, setSearch] = useState<string>("");
+  const deferredSearch = useDeferredValue(search);
+  const [showOnline, setShowOnline] = useState(false);
 
   useEffect(() => {
     getData();
-    // set(res);
   }, []);
 
   const getData = async () => {
-    let tripService = new TripUseCase(iTripRepository);
+    const tripService = new TripUseCase(iTripRepository);
     const res = await tripService.getAllMockTrips();
-    set(res);
+    setTripsMock(res);
   };
 
   return (
     <View style={styles.listContainer}>
-      <FlatList
-        data={state}
-        keyExtractor={(trip) => trip._id}
-        renderItem={({ item }) => (
-          <TaskItem
-            task={item}
-            //   onToggleStatus={() => onToggleTaskStatus(item)}
-            //   onDelete={() => onDeleteTask(item)}
-            // Don't spread the Realm item as such: {...item}
-          />
+      <View style={{ marginTop: 10 }}>
+        <Text style={styles.textForm}>Search:</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={(el) => {
+            if (el.length > 0) {
+              const filtertrips: Trip[] = Array.from(
+                realm.objects<Trip>("Trip").filtered(`name CONTAINS[c] "${el}"`)
+              );
+              setFilteredData(filtertrips);
+              setSearch(el);
+            } else {
+              setSearch("");
+            }
+          }}
+        />
+
+        <Button onPress={() => setShowNewTrip(true)} title="Add Trip" />
+        {showNewTrip && <CreateTrip onClose={setShowNewTrip} />}
+
+        {showOnline ? (
+          <ListData data={tripsMock} />
+        ) : deferredSearch.length > 0 ? (
+          <ListData data={filteredData} />
+        ) : (
+          <ListData data={trips} />
         )}
-      />
+
+        <Button
+          onPress={() => setShowOnline(!showOnline)}
+          title="Show online data"
+        />
+      </View>
     </View>
   );
 };
 
 export default ListTrips;
 
+const ListData = React.memo<any>(({ data }) => {
+  const realm = useRealm();
+
+  const deleteTrip = useCallback(
+    (el: Trip) => {
+      realm.write(() => {
+        realm.delete(el);
+      });
+    },
+    [realm]
+  );
+
+  return (
+    <View style={{ height: 500 }}>
+      <FlatList
+        data={data}
+        keyExtractor={(trip) => trip._id.toString()}
+        renderItem={({ item }) => (
+          <TripItem task={item} onDelete={() => deleteTrip(item)} />
+        )}
+      />
+    </View>
+  );
+});
+
 const styles = StyleSheet.create({
   listContainer: {
-    // flex: 1,
-    // justifyContent: "center",
+    justifyContent: "center",
+  },
+  textForm: { color: colors.light, fontWeight: "bold" },
+  input: {
+    height: 40,
+    marginBottom: 10,
+    paddingLeft: 10,
+    borderWidth: 1,
+    borderRadius: 4,
+    color: colors.light,
+    paddingHorizontal: 10,
+    borderColor: colors.light,
   },
 });

@@ -1,77 +1,17 @@
-# Expo Template Realm TypeScript
+# Expo Template Realm TypeScript | Show Trips
 
-<p>
-  <!-- iOS -->
-  <img alt="Supports Expo iOS" longdesc="Supports Expo iOS" src="https://img.shields.io/badge/iOS-4630EB.svg?style=flat-square&logo=APPLE&labelColor=999999&logoColor=fff" />
-  <!-- Android -->
-  <img alt="Supports Expo Android" longdesc="Supports Expo Android" src="https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff" />
-</p>
-
-Simple Expo template to quickly get started with Realm.
-
-## 🚀 How to use
-
-Use the following command to generate your template:
-
-```
-npx create-expo-app MyAwesomeRealmApp --template @realm/expo-template
-```
-
-NOTE: version of `npm` before v9 may cause problems when initializing the template. If the initialization fails, please upgrade to the latest `npm` and try again.
-
-```
-npm install -g npm
-```
-
+* CRUD using realm and Expo with EAS
 ## 🏃 How to build and run locally
 
-- [Setup development Environment](https://reactnative.dev/docs/environment-setup)
-- Build/Run on iOS 🍎
+- [Download APK build](https://drive.google.com/file/d/1R06NQAEdIwaOrsS1Z0Ra4yh0zjgMd6XZ/view?usp=sharing)
 
+Install dependencies
 ```
-yarn ios
-```
-
-```
-npm run ios
+yarn
 ```
 
-- Build/Run on Android 🤖
+Run on Android 🤖
 
 ```
-yarn android
+yarn start (and select android with emulator)
 ```
-
-```
-npm run android
-```
-
-## 💻 Start the Dev Client
-
-```
-expo start --dev-client
-```
-
-```
-yarn start
-```
-
-```
-npm run start
-```
-
-## 🔀 Setting up sync
-
-See https://github.com/realm/realm-js/blob/master/templates/docs/sync-setup.md for instructions.
-
-## ☁️ Build in the cloud
-
-- [Building with EAS](https://docs.expo.dev/eas/)
-
-## 📝 Notes
-
-- [React Native docs](https://reactnative.dev/docs/getting-started)
-- [React Hooks](https://reactjs.org/docs/hooks-intro.html)
-- [Setting Up Realm Sync](https://docs.mongodb.com/realm/sdk/react-native/quick-start/)
-- [Realm JS Documentation](https://docs.mongodb.com/realm/sdk/react-native/)
-- [@realm/react Readme](https://github.com/realm/realm-js/tree/master/packages/realm-react#readme)

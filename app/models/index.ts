@@ -1,3 +1,3 @@
-import { Task } from "./Task";
+import { LocalDocument } from "./LocalDocument";
 
-export const schemas = [Task];
+export const schemas = [LocalDocument];

@@ -3,7 +3,6 @@ import { useApp, useAuth, useQuery, useRealm, useUser } from "@realm/react";
 import { Pressable, StyleSheet, Text } from "react-native";
 
 import { Task } from "./models/Task";
-import { TaskManager } from "./components/TaskManager";
 import { buttonStyles } from "./styles/button";
 import { shadows } from "./styles/shadows";
 import colors from "./styles/colors";
@@ -14,7 +13,7 @@ export const AppSync: React.FC = () => {
   const user = useUser();
   const app = useApp();
   const { logOut } = useAuth();
-  const [showDone, setShowDone] = useState(false);
+  const [showDone] = useState(false);
   const tasks = useQuery(
     Task,
     (collection) =>
@@ -33,12 +32,6 @@ export const AppSync: React.FC = () => {
   return (
     <>
       <Text style={styles.idText}>Syncing with app id: {app.id}</Text>
-      <TaskManager
-        tasks={tasks}
-        userId={user?.id}
-        setShowDone={setShowDone}
-        showDone={showDone}
-      />
       <Pressable style={styles.authButton} onPress={logOut}>
         <Text
           style={styles.authButtonText}

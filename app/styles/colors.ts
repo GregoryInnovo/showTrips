@@ -4,7 +4,9 @@ const colors = {
   purpleDark: "#52a552",
   gray: "#B5B5B5",
   white: "#FFFFFF",
+  light: "#FFFFFF",
   black: "#000000",
+  red: "#f22c3d",
 };
 
 export default colors;

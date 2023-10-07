@@ -2,9 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import ListTrips from "../trips/ListTrips";
 
-type Props = {};
-
-const Menu = (props: Props) => {
+const Menu = () => {
   return (
     <View style={styles.content}>
       <Text style={styles.title}>Review a trip</Text>
@@ -17,7 +15,6 @@ export default Menu;
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1,
     paddingTop: 20,
     paddingHorizontal: 20,
   },
