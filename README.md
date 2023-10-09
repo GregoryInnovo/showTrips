@@ -39,28 +39,41 @@ eas build --profile development --platform android // generate the development A
 ```
 
 Generate project files
+
 ├───. // config files and entry point
+
 ├───app
+
 │   ├───components 
+
 │   ├───core
+
 │   │   ├───data
+
 │   │   ├───domain
+
 │   │   └───presentation
+
 │   │       ├───menu
+
 │   │       └───trips
+
 │   ├───styles
+
 │   └───utils
+
 ├───assets
+
 └───node_modules
 
 Read and Delete elements
 
-<img src ="https://i.imgur.com/oMMdfQT.jpg" placeholder="Read and delete elements" />
+<img src ="https://i.imgur.com/oMMdfQT.jpg" placeholder="Read and delete elements" height="250px" />
 
 Create element
 
-<img src ="https://i.imgur.com/9lai6NN.jpg" placeholder="Create element" />
+<img src ="https://i.imgur.com/9lai6NN.jpg" placeholder="Create element" height="250px" />
 
 Update element
 
-<img src ="https://i.imgur.com/Q2vbgTD.jpg" placeholder="Update element" />
+<img src ="https://i.imgur.com/Q2vbgTD.jpg" placeholder="Update element" height="250px" />
