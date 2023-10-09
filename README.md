@@ -68,12 +68,12 @@ Generate project files
 
 Read and Delete elements
 
-<img src ="https://i.imgur.com/oMMdfQT.jpg" placeholder="Read and delete elements" height="250px" />
+<img src ="https://i.imgur.com/oMMdfQT.jpg" placeholder="Read and delete elements" height="450px" />
 
 Create element
 
-<img src ="https://i.imgur.com/9lai6NN.jpg" placeholder="Create element" height="250px" />
+<img src ="https://i.imgur.com/9lai6NN.jpg" placeholder="Create element" height="450px" />
 
 Update element
 
-<img src ="https://i.imgur.com/Q2vbgTD.jpg" placeholder="Update element" height="250px" />
+<img src ="https://i.imgur.com/Q2vbgTD.jpg" placeholder="Update element" height="450px" />
