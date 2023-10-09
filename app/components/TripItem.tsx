@@ -7,7 +7,7 @@ import { Trip } from "../core/data/Trip";
 import UpdateTrip from "../core/presentation/trips/UpdateTrip";
 
 type TripItemProps = {
-  task: Trip & Realm.Object;
+  trip: Trip & Realm.Object;
   onDelete: (el: Trip) => void;
 };
 
@@ -22,18 +22,18 @@ interface TripData {
   arrival_date: Date;
 }
 
-export const TripItem = React.memo<TripItemProps>(({ task, onDelete }) => {
+export const TripItem = React.memo<TripItemProps>(({ trip, onDelete }) => {
   const [canShow, setCanShow] = useState(false);
 
   const [tripData, setTripData] = useState<TripData>({
-    ...task,
-    departure_date: new Date(task.departure_date),
-    arrival_date: new Date(task.arrival_date),
+    ...trip,
+    departure_date: new Date(trip.departure_date),
+    arrival_date: new Date(trip.arrival_date),
   });
 
   return (
     <View>
-      <View style={styles.task}>
+      <View style={styles.tripContainer}>
         <Pressable
           style={[styles.status, tripData.excess_capacity && styles.completed]}
         >
@@ -60,7 +60,7 @@ export const TripItem = React.memo<TripItemProps>(({ task, onDelete }) => {
           </Text>
         </View>
         <View style={styles.deleteButton}>
-          <Pressable onPress={() => onDelete(task)}>
+          <Pressable onPress={() => onDelete(trip)}>
             <Text style={styles.deleteText}>✖</Text>
           </Pressable>
           <Pressable onPress={() => setCanShow(!canShow)}>
@@ -74,7 +74,7 @@ export const TripItem = React.memo<TripItemProps>(({ task, onDelete }) => {
 });
 
 const styles = StyleSheet.create({
-  task: {
+  tripContainer: {
     height: 150,
     alignSelf: "stretch",
     flexDirection: "row",
