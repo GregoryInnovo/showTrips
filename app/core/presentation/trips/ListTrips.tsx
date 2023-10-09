@@ -51,7 +51,9 @@ const ListTrips = () => {
           onChangeText={(el) => {
             if (el.length > 0) {
               const filtertrips: Trip[] = Array.from(
-                realm.objects<Trip>("Trip").filtered(`name CONTAINS[c] "${el}"`)
+                realm
+                  .objects<Trip>("Trip")
+                  .filtered(`name CONTAINS[c] "${el}"`),
               );
               setFilteredData(filtertrips);
               setSearch(el);
@@ -92,7 +94,7 @@ const ListData = React.memo<any>(({ data }) => {
         realm.delete(el);
       });
     },
-    [realm]
+    [realm],
   );
 
   return (
@@ -101,7 +103,7 @@ const ListData = React.memo<any>(({ data }) => {
         data={data}
         keyExtractor={(trip) => trip._id.toString()}
         renderItem={({ item }) => (
-          <TripItem task={item} onDelete={() => deleteTrip(item)} />
+          <TripItem trip={item} onDelete={() => deleteTrip(item)} />
         )}
       />
     </View>

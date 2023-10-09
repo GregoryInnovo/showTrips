@@ -15,7 +15,6 @@ export class ITripRepository implements TripRepository {
 
     return jsonData.map((trip: Trip) => {
       const _id = new BSON.ObjectId();
-      console.log("da ID: ", trip);
       return { _id, createdAt: new Date(trip.createdAt), ...trip };
     });
   }
